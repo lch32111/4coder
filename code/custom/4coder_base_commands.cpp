@@ -971,6 +971,18 @@ isearch(Application_Links *app, Scan_Direction start_scan, i64 first_pos,
                 }
             }
         }
+        else if (match_key_code(&in, KeyCode_V) && has_modifier(&in, KeyCode_Control))
+        {
+            Scratch_Block scratch(app);
+            String8 clipboard_string = push_clipboard_index(scratch, 0, 0);
+            if (clipboard_string.size)
+            {
+                String_u8 bar_string = Su8(bar.string, sizeof(bar_string_space));
+                string_append(&bar_string, clipboard_string);
+                bar.string = bar_string.string;
+                string_change = true;
+            }
+        }
         
         b32 do_scan_action = false;
         b32 do_scroll_wheel = false;
