@@ -6,3 +6,4 @@ vc120.pdb
 .DS_Store
 test_data/input_data/*.4id
 
+build/
