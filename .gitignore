@@ -2,3 +2,7 @@ vc120.pdb
 4ed_data.ctm
 .DS_Store
 *.dSYM
+
+.DS_Store
+test_data/input_data/*.4id
+
