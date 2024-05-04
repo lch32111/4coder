@@ -8,7 +8,7 @@ If you are ready to use `cl.exe`, then build like this:
 
 ```bat
 cd 4coder/code
-"bin/build.bat"
+"bin/build.bat" release
 ```
 
 After building it, you can see `4coder/build` folder and `4ed.exe`. you need to copy the `4coder/4coder-non-source/dist_files/fonts` folder into `4coder/build` folder in order to execute `4ed.exe`. 

@@ -14,6 +14,7 @@ cd %location%
 
 set mode=%1
 if "%mode%" == "" (set mode="/DDEV_BUILD")
+if "%mode%" == "release" (set mode=/O2 /DOPT_BUILD)
 
 set opts=/W4 /wd4310 /wd4100 /wd4201 /wd4505 /wd4996 /wd4127 /wd4510 /wd4512 /wd4610 /wd4390 /wd4189 /WX
 set opts=%opts% /GR- /EHa- /nologo /FC /Zi
