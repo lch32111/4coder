@@ -7,3 +7,4 @@ vc120.pdb
 test_data/input_data/*.4id
 
 build/
+latest-safe-build/

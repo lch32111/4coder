@@ -941,10 +941,33 @@ CUSTOM_DOC("Looks for a project.4coder file in the current directory and tries t
         b32 recursive = vars_b32_from_var(recursive_var);
         b32 relative = vars_b32_from_var(relative_var);
         
-        
         u32 flags = 0;
         if (recursive){
             flags |= PrjOpenFileFlag_Recursive;
+        }
+        
+        u64 env_start = string_find_first(path, 0, '|');
+        u64 env_end = string_find_first(path, env_start + 1, '|');
+        if (env_start < path.size && env_end < path.size)
+        {
+            Range_i64 env_range = {(i64)env_start + 1, (i64)env_end};
+            String8 env_name = push_string_copy(scratch, string_substring(path, env_range));
+            const char* env_cstr = getenv((const char*)env_name.str);
+            if (env_cstr == NULL)
+            {
+                // There is no match for this environment variable.
+                print_message(app, string_u8_litexpr("Unavailable ENV path: "));
+                print_message(app, env_name);
+                print_message(app, string_u8_litexpr("\n"));
+                continue;
+            }
+            String8 env_resolved = {(u8*)env_cstr, cstring_length((char*)env_cstr)};
+            
+            // inclued '|' characters for replacement.
+            env_range.start = env_start;
+            env_range.end = env_end + 1;
+            path = string_replace(scratch, path, string_substring(path, env_range), env_resolved, StringFill_NullTerminate);
+            relative = 0; // suppress relative path
         }
         
         String8 file_dir = path;

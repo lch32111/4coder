@@ -1,11 +1,14 @@
 @echo off
 
+REM NOTE(chan): argument for debug/release build
+set mode=%1
+
 REM NOTE(chan): copy the original files in generated, which will change after the build
 REM I will overwrite the files with the original files after the build
 copy ..\generated\command_metadata.h .\original_command_metadata.h
 copy ..\generated\managed_id_metadata.cpp .\original_managed_id_metadata.cpp
 
-call ..\bin\buildsuper_x64-win.bat .\4coder_fleury.cpp release
+call ..\bin\buildsuper_x64-win.bat .\4coder_fleury.cpp %mode%
 
 move .\original_command_metadata.h ..\generated\command_metadata.h
 move .\original_managed_id_metadata.cpp ..\generated\managed_id_metadata.cpp
