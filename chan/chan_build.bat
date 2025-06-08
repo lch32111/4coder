@@ -30,9 +30,13 @@ ROBOCOPY "4coder-non-source\dist_files\fonts" "build/fonts"
 REM copy theme file
 mkdir "build\themes"
 ROBOCOPY "chan" "build\themes" "theme-chan.4coder"
+ROBOCOPY "chan" "build\themes" "theme-chan-light.4coder"
 
 REM copy config file
 ROBOCOPY "chan" "build" "config.4coder"
+
+REM copy binding file
+ROBOCOPY "chan" "build" "bindings.4coder"
 
 goto EXIT
 
