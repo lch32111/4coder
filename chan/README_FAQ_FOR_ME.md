@@ -74,5 +74,9 @@ In `load_project`, I added the code that checks whether a path include `|` chara
 
 
 
+### What color value is used in 4coder?
+
+If you check `theme-###.4coder`, you can see many variables with color value. The color value is a hex value representing ARGB. For example 0xFF1EB9FF means Red 1E, Green B9, Blue FF, and Alpha AA, which means Red 30, Green 185, Blue 255, Alpha 255.
+
 
 
